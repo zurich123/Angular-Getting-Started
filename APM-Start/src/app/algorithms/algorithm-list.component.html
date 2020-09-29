@@ -46,7 +46,7 @@
                                         [style.margin.px]='imageMargin'>
                              </td>
                              <td>{{algorithm.AlgorithmID}}</td>
-                             <td>{{algorithm.Algorithm}}</td>
+                             <td>{{algorithm.Algorithm|convertToSpaces:'-'}}</td>
                              <td>{{algorithm.Type}}</td>
                              <td>{{algorithm.Prediction | percent}}</td>
                              <td>{{algorithm.starRating}}</td>
