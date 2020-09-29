@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-
+import {AlgorithmListComponent} from './algorithms/algorithm-list.component';
+ 
 @Component({
-  selector: 'pm-root',
+  selector: 'ml-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular: Getting Started';
+  title = 'Machine Learning Demo';
 }
