@@ -11,8 +11,16 @@ export class AlgorithmListComponent implements OnInit{
     pageTitle: string = 'Algorithms List !!!';
     imageWidth: number = 50;
     imageMargin: number = 2;
-    listFilter: string = "Un" ;
+    private _listFilter: string;
+    public get listFilter(): string {
+       return this._listFilter;
+    }
+    public set listFilter(value: string) {
+       this._listFilter = value;
+       this.filteredAlgorithms = this.listFilter ? this.performFilter(this.listFilter):this.algorithms;
+    }
     showImage: boolean = false;
+    filteredAlgorithms: IAlgorithm[] = [];
     algorithms: IAlgorithm[] = [
         {
             "AlgorithmId": 1,
@@ -49,7 +57,7 @@ export class AlgorithmListComponent implements OnInit{
           {
             "AlgorithmId": 5,
             "Algorithm": "K-Means",
-            "Type": "UnSupervised",
+            "Type": "Unsupervised",
             "Prediction": "0.7",
             "starRating": 4.6,
             "imageUrl": "assets/images/xbox-controller.png"
@@ -65,4 +73,23 @@ export class AlgorithmListComponent implements OnInit{
     ngOnInit(): void {
         console.log('In OnInit');
     }
+
+    onRatingClicked(message: string): void {
+       this.pageTitle = 'Machine Learning Algorithms List  ' + message;
+    }
+
+    constructor() {
+      this.filteredAlgorithms = this.algorithms;
+      this.listFilter = 'Un';
+    }
+
+    performFilter(filterBy: string): IAlgorithm[] {
+       filterBy = filterBy.toLocaleLowerCase();
+       console.log(filterBy);
+       return this.algorithms.filter((algorithm: IAlgorithm) =>
+                  algorithm.Type.toLocaleLowerCase().indexOf(filterBy) != -1);
+
+    }
+
+   
 }
