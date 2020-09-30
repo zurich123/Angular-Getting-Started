@@ -13,6 +13,7 @@ export class AlgorithmListComponent implements OnInit{
     imageWidth: number = 50;
     imageMargin: number = 2;
     private _listFilter: string;
+    errorMessage:string;
     public get listFilter(): string {
        return this._listFilter;
     }
@@ -29,9 +30,16 @@ export class AlgorithmListComponent implements OnInit{
     }
 
     ngOnInit(): void {
+       this.algorithmService.getAlgorithms().subscribe({
+         next:algorithms =>{
+              this.algorithms = algorithms;
+              this.filteredAlgorithms = this.algorithms;
+         },
+         error: err => this.errorMessage = err
+       });
         console.log('In OnInit');
-        this.algorithms = this.algorithmService.getAlgorithms();
-        this.filteredAlgorithms = this.algorithms;
+        
+        
 
     }
 
