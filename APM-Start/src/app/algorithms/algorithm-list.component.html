@@ -45,8 +45,12 @@
                                         [style.width.px]='imageWidth'
                                         [style.margin.px]='imageMargin'>
                              </td>
-                             <td>{{algorithm.AlgorithmID}}</td>
-                             <td>{{algorithm.Algorithm|convertToSpaces:'-'}}</td>
+                             <td>{{algorithm.AlgorithmId}}</td>
+                             <td>
+                                 <a [routerLink]="['/algorithms', algorithm.AlgorithmId]">
+                                 {{algorithm.Algorithm|convertToSpaces:'-'}}
+                                 </a>
+                                </td>
                              <td>{{algorithm.Type}}</td>
                              <td>{{algorithm.Prediction | percent}}</td>
                              <td><pm-star [rating]= 'algorithm.starRating'

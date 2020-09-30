@@ -3,7 +3,7 @@ import {IAlgorithm} from './algorithm';
 import {AlgorithmService} from './algorithm.service';
  
 @Component({
-    selector : 'algo-list',
+    
     templateUrl: './algorithm-list.component.html',
     styleUrls: ['./algorithm-list.component.css']
 })
