@@ -5,31 +5,23 @@ import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { AlgorithmListComponent} from './algorithms/algorithm-list.component';
-import { ConvertToSpacesPipe} from './shared/convert-to-spaces.pipe';
-import { StarComponent } from './shared/star.component';
-import { AlgorithmDetailComponent } from './algorithms/algorithm-detail.component';
+
 import { WelcomeComponent} from './home/welcome.component';
-import {AlgorithmDetailGuard} from './algorithms/algorithm-detail.guard';
+
+import {AlgorithmModule} from './algorithms/algorithm.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlgorithmListComponent,
-    ConvertToSpacesPipe,
-    StarComponent,
-    AlgorithmDetailComponent,
     WelcomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    AlgorithmModule,
     HttpClientModule,
     RouterModule.forRoot([
-       { path: 'algorithms', component:AlgorithmListComponent},
-       {path: 'algorithms/:id',
-        canActivate:[AlgorithmDetailGuard],
-        component:AlgorithmDetailComponent},
+       
        {path: 'welcome', component:WelcomeComponent},
        {path: '', redirectTo:'welcome', pathMatch:'full'},
        {path: '**', redirectTo:'welcome',pathMatch:'full'}
